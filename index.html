@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- css reset -->
+    <link rel="stylesheet" href="./css/reset.css">
+
+    <!-- 公共common.css -->
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <!-- weui -->
+    <link rel="stylesheet" href="./css/weui.css">
+    <link rel="stylesheet" href="./css/jquery-weui.css">
+
+
+    <title>Item_wrap</title>
+</head>
+<body ontouchstart>
+    <!-- header start -->
+    <header>
+        <!-- swiper -->
+        <div class="swiper-container indexBanner" id="indexBanner" data-space-between='10' data-pagination='.swiper-pagination' data-autoplay="1000">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" v-for="(item,index) in data">
+                    <a href="#"><img :src="item.img_url" alt=""></a>
+                </div>
+            </div>
+            <!-- focus -->
+            <div class="swiper-pagination"></div>
+        </div>
+        <!-- search -->
+       <div class="search-wrap">
+           <div class="search-title">搜索</div>
+           <div class="search-content">
+               <input id="searchInput" type="text" placeholder="请输入搜索信息">
+           </div>
+       </div>
+    </header>
+    <!-- header end   -->
+
+    <div class="notice">
+        <div class="notice-title">公告</div>
+        <div class="notice-content">
+            <div class="swiper-container" id="noticalBanner" data-space-between='10' data-pagination='.swiper-pagination' data-autoplay="1000">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><a href="javascript:void(0)">1111111111111111111111111111111111111111</a></div>
+                    <div class="swiper-slide"><a href="javascript:void(0)">2222222222222222222222222222222222222222</a></div>
+                    <div class="swiper-slide"><a href="javascript:void(0)">3333333333333333333333333333333333333333</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- main start -->
+    <div class="main">
+        <!-- choiceness list -->
+        <div class="choiceness main-item" id="choiceness_bind">
+            <h3>精选分类</h3>
+            <div class="choiceness-content">
+                <div class="choiceness-item" v-for="(item,index) in data">
+                    <a href="javascript:void(0)">
+                        <img :src="item.img_url" alt="">
+                        <span class="choiceness-item-desc">{{item.name}}</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- hot -->
+        <div class="hot main-item">
+            <h3>热产品</h3>
+            <!-- swiper  -->
+            <div class="swiper-container hot-content"  id="hotBanner" dir="ltr">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide hot-item " v-for="(item,index) in data">
+                        <a :href="'product_detail.html?business_id='+item.business_id">
+                            <img :src="item.img_url" alt="">
+                            <span class="hot-item-desc">{{item.business_name}}</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- item -->
+        <div class="category main-item">
+            <h3>分类</h3>
+             <div class="category-content" id="category_bind">
+                 <div class="category-item" v-for="(item,index) in data">
+                     <a :href="'product_detail.html?business_id='+item.business_id">
+                         <img :src="item.img_url" alt="">
+                         <span class="category-name">{{item.business_name}}</span>
+                         <div class="category-desc">
+                             <!--<span class="category-name">{{item.business_name}}</span>-->
+                             ￥<span class="category-pri">{{item.product_pri}}</span>
+                         </div>
+                     </a>
+                 </div>
+             </div>
+             </div>
+
+
+        <!-- nomore -->
+        <div class="nomore">
+            <span class="nomore-line"></span>
+            <span class="no-inf">没有更多了</span>
+            <span class="nomore-line"></span>
+        </div>
+    </div>
+    <!-- main end   -->
+
+    <!-- 回到顶部 -->
+    <div class="comeBack" id="comeTop">
+        <i class="icon-toTop"></i>
+        <span class="come-top">顶部</span>
+    </div>
+    <!-- footer start -->
+
+    <footer>
+        <!-- tabbar -->
+        <div class="weui-tabbar" id="footer-tabber">
+            <a href="./index.html" class="weui-tabbar__item weui-bar__item--on">
+                <!--<span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span>-->
+                <div class="weui-tabbar__icon">
+                    <img src="./images/icon_nav_button.png" alt="">
+                </div>
+                <p class="weui-tabbar__label">首页</p>
+            </a>
+            <!--<a href="javascript:;" class="weui-tabbar__item">-->
+            <a href="./menu.html" class="weui-tabbar__item">
+                <div class="weui-tabbar__icon">
+                    <img src="./images/icon_nav_msg.png" alt="">
+                </div>
+                <p class="weui-tabbar__label">分类</p>
+            </a>
+            <a href="./order.html" class="weui-tabbar__item">
+                <div class="weui-tabbar__icon">
+                    <img src="./images/icon_nav_article.png" alt="">
+                </div>
+                <p class="weui-tabbar__label">发现</p>
+            </a>
+            <a href="./mine.html" class="weui-tabbar__item">
+                <div class="weui-tabbar__icon">
+                    <img src="./images/icon_nav_cell.png" alt="">
+                </div>
+                <p class="weui-tabbar__label">我的</p>
+            </a>
+        </div>
+    </footer>
+    <!-- footer end   -->
+
+    <!-- jquery -->
+    <script src="./js/jquery-2.1.4.js"></script>
+    <script src="./js/jquery-weui.min.js"></script>
+    <script src="./js/swiper.min.js"></script>
+    <!-- common js -->
+    <script src="./js/common.js"></script>
+    <script src="./js/vue.js"></script>
+    <script src="./js/data.js"></script>
+    <script>
+        $(function () {
+            // alert(1)     // 测试jquery
+            var index = {
+                // 初始化函数
+                init: function(){
+                    this.bindEvents();
+                    this.swiperSlide();
+                    this.getScrollHeight();
+
+                    // this.banner_bind();
+                    this.choiceness_bind();
+                    // this.hotBanner_bind();
+                    this.category_bind();
+                },
+                // 事件函数
+                bindEvents: function(){
+                    $("body").on("click",".weui-tabbar__item",index.clickTabbar);
+                    $("body").on("click","#comeTop",index.clickComeTop);
+                    $("body").on("keypress","#searchInput",index.searchKeypress)
+                },
+                // swiper slide
+                swiperSlide: function(){
+                    this.banner_bind();
+                    var indexBanner = new Swiper("#indexBanner",{
+                        autoplay: 3000,
+                        autoplayDisableOnInteraction: false,
+                        pagination: '.swiper-pagination',
+                        observer: true,
+                        // observeParents: true,
+
+
+                    });
+
+                    this.hotBanner_bind();
+                    var hotBanner = new Swiper("#hotBanner",{
+                        loop: false,
+                        slidesPerView: 3.5,
+                        spaceBetween: 10,
+                        slidesOffsetBefore: 10,
+                        observer: true,
+                        observeParents: true,
+                        initialSlide: 1,
+                        observer: true,//修改swiper自己或子元素时，自动初始化swiper
+
+
+
+
+                    });
+
+                    var noticalBanner = new Swiper("#noticalBanner",{
+                        direction: "vertical",
+                        autoplay: 3000,
+                        initialSlide: 0
+                    })
+                },
+
+                // banner 数据渲染
+                banner_bind: function(){
+                    var bannerVue = new Vue({
+                        el: "#indexBanner",
+                        data:{
+                            data: []
+                        }
+
+                    })
+                    var mockData = returnJson('首页轮播');
+                    console.log(mockData)
+                    bannerVue.data = mockData.data;
+                },
+                choiceness_bind: function(){
+                    var choicenessVue = new Vue({
+                        el: "#choiceness_bind",
+                        data:{
+                            data: []
+                        },
+                    })
+                    var mockData = returnJson('精选分类');
+                    choicenessVue.data = mockData.data;
+                },
+                hotBanner_bind: function(){
+                    var hotBannerVue = new Vue({
+                        el: "#hotBanner",
+                        data:{
+                            data: []
+                        },
+                    })
+                    var mockData = returnJson('热产品');
+                    console.log(mockData)
+                    hotBannerVue.data = mockData.data;
+                },
+                category_bind: function(){
+                    var categoryVue = new Vue({
+                        el: "#category_bind",
+                        data:{
+                            data: []
+                        },
+                    })
+                    var mockData = returnJson('分类');
+                    console.log(mockData)
+                    categoryVue.data = mockData.data;
+                },
+
+                // 监听滚动条位置
+                getScrollHeight: function () {
+                    $(window).scroll(function() {
+                        var scrollHeight = $(document).scrollTop();
+                        console.log(scrollHeight);
+                        if (scrollHeight > 500){
+                            $("#comeTop").fadeIn(500);
+                        }else{
+                            $("#comeTop").fadeOut(500);
+                        }
+                    });
+                },
+                // 点击返回顶部
+                clickComeTop: function () {
+                    $("html,body").animate({scrollTop:0}, 500);
+                },
+                searchKeypress: function (event) {
+                    if (event.keyCode == 13){
+                        event.preventDefault();
+                        // alert(1)
+                        location.href="html?search="+event.target.value;
+                    }
+                }
+            }
+            // 执行函数
+            index.init();
+        })
+    </script>
+</body>
+</html>
